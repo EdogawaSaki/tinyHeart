@@ -1,0 +1,81 @@
+body{
+    padding-top: 10px;
+    margin-top: 0px;
+}   
+.all_bg{
+    width: 800px;
+    height: 600px;
+    margin: 0px auto;		
+	background:url(../images/back1.jpg);
+	background-repeat: no-repeat;
+	background-size:100% 100%;
+	/* opacity:0.5; */
+ }
+.gameName{
+	padding-top: 120px;
+	padding-left: 130px;
+	color: #2894FF;
+	font-size: 70px;
+	font-weight: bolder;
+	font-family: KaiTi;
+	text-shadow: 5px 5px 5px #000079;
+}
+.nav{
+	padding-top:100px; 
+	padding-left:430px;
+	width: 180px;
+}
+ul{
+	list-style:none;
+}
+a{
+	text-decoration: none;
+	color:#000;
+}
+#nav-one,
+#nav-two,
+#nav-three,
+#nav-four,
+#logout{
+	font-size: 20px;
+	font-family: Arial;
+	padding-bottom: 3px;
+}
+#nav-one::before,
+#nav-two::before,
+#nav-three::before,
+#logout::before,
+#nav-four::before{
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-image: url(../images/love.png);
+	background-size: 100% 100%;
+	margin-right: 5px;
+	vertical-align: -3px;
+}
+
+#nav-one:hover,
+#nav-two:hover,
+#nav-three:hover,
+#nav-four:hover,
+#logout:hover{
+	cursor:pointer;
+}
+#welcome{
+	position: fixed;
+	top:40px;
+	left:65%;
+	width: 180px;
+	height: 128px;
+	padding:70px 0 0 70px;	
+	font-family: KaiTi;
+	background: url(../images/ECG2.png) no-repeat; 
+	background-size:100% 100%;
+	background-position: -40px -20px;
+	color: #FFF;
+}
+#welcome span{
+
+}

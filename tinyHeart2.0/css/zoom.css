@@ -1,0 +1,83 @@
+#zoom {
+	z-index: 99990;
+	position: fixed;
+	/* top: 0;
+	left: 0; */
+	display: none;
+	/* width: 100%;
+	height: 100%; */
+	top: 50%;
+	left: 50%;
+	width: 800px;
+	height: 600px;
+	margin: -300px 0 0 -400px;
+	background: rgba(0, 0, 0, 0.8);
+	/* IE下颜色效果转换，水平渐变 */
+	filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+#zoom .content {
+	z-index: 99991;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 600px;
+	height: 450px;
+	background: #D0D0D0 url('../images/loveframe.png') no-repeat 50% 40%;
+	padding: 0;
+	margin: -225px 0 0 -300px;
+	border: 1px solid rgba(255, 0, 0, .08);
+	box-shadow: -20px 20px 20px rgba(0, 0, 0, 0.3);
+}
+
+#zoom .content .content1,
+#zoom .content .content2,
+#zoom .content .content3{
+	padding: 165px 60px;
+	font-size: 20px;
+	text-indent:2em;
+	line-height:38px;
+	font-family: Arial;
+}
+#zoom .content .content3{
+	text-align:center;
+	line-height:28px;
+}
+#zoom .content .content3 #newName{
+	border-radius: 5px;
+	background-color: #E0E0E0;
+}
+#zoom .content .content3 #randomName{
+	font-size: 15px;
+	color: #460046;
+	border: none;
+	background-color: transparent;/* 背景透明 */
+}
+#zoom .content .content3 #randomName:hover,
+#zoom .content .content3 #sign:hover{
+	cursor:pointer;
+}
+#zoom .content .content3 #sign{
+	margin-right: 25px;
+	margin-top: 5px;
+	font-size: 18px;
+	color: #272727;
+	border: none;
+	background-color: transparent;
+}
+
+#zoom .close {
+	z-index: 99993;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 49px;
+	height: 49px;
+	cursor: pointer;
+	background: transparent url('../images/close.png') no-repeat 50% 50%;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+#zoom .close:hover {
+	background-color: #da4f49;
+}

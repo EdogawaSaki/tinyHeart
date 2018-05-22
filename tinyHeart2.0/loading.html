@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>loading</title>
+	<link rel="stylesheet" href="css/loading.css">
+	<link rel="stylesheet" href="css/zoom.css">
+</head>
+<body>
+	<div class="all_bg">
+		<div class="gameName">爱心鱼</div>
+		<div class="nav">
+			<ul>
+			<li id="nav-one" class="nav-content">游戏说明</li>
+			<li id="nav-two" class="nav-content">游戏规则</li>
+			<li id="nav-three" class="nav-content">用户登录</li>
+			<li id="logout" style="display: none;">用户注销</li>
+			<li id="nav-four"><a href="tinyHeart.html">新游戏go</a></li>
+			</ul>
+		</div>
+	</div> 
+	<div id="zoom" style="display: none;">
+			<a class="close"></a>
+			<div class="content">
+				<div class="content1">在海洋底部，摆动的海葵生产出果实漂浮在水中。鱼妈妈需要通过吃果实并喂给小鱼的方式来使小鱼存活下来。这是个清新有爱的小游戏。</div>
+				<div class="content2">玩家通过控制鼠标来控制大鱼的游动。如果小鱼得到喂食，相应分数就会增加；一旦小鱼长时间得不到喂食，它身体就会变透明 死去，游戏就结束了。</div>
+				<div class="content3">
+					<p>请为您的角色取一个名字：</p>
+					<div >
+  						<p><input type="text" name="fname" id="newName" />
+  							&nbsp;&nbsp;
+  							<button id="randomName" onclick="randomName()">随机名字
+  							</button>
+  						</p>
+  						<p><input type="button" id="sign" value="登录"></p>
+  					</div>
+  				</div>
+			</div>
+		</div>
+		<div id="welcome">欢迎你，<span id="user"></span></div>
+
+<script src="js/jquery-2.0.3.min.js"></script>
+	<script>
+        $('.nav ul li').click(function(){
+            /*$('#zoom').show();*/
+        });
+        $('#zoom .close').click(function(){
+            $('#zoom').hide();
+        });
+
+        $('.nav .nav-content').click(function(){
+            $('#zoom').show();
+        	var index = $(this).index();/*获取点击的li下标值*/
+        	$('.content > div').hide();/*将所有div先隐藏*/
+        	$('.content > div').eq(index).show();/*根据点击的li下标值显示对应的div*/
+        });
+
+        $('#sign').click(function(){
+            if($('#newName').val()){
+                localStorage.setItem('username',$('#newName').val());
+                alert('登陆成功');
+                $('#user').parent().show();
+                $('#user').html(localStorage.getItem('username'));
+                $('#zoom').hide();
+                checkLogin();
+            }else{
+                alert('用户名不能为空');
+            }
+			
+        });
+
+
+        //注销
+        $('#logout').click(function(){
+			localStorage.removeItem('username');
+			alert('注销成功');
+			$('#user').parent().hide();
+    		window.location.reload();
+        });
+    	
+
+		checkLogin();
+
+
+		// login();
+		function login() {
+			var datas = localStorage.getItem('data');
+			var json  = JSON.parse(datas);
+			var lis = '';
+			$.each(json,function(index,val){
+				//一开始先加载出来，不过先不显示，如果用户结果不影响排行榜的话，就直接显示这个
+				switch(index){
+					case 0:lis += '<li><i class="first"></i> '+val.username+'：<span class="listScore">'+val.score+'</span></li>';break;
+                    case 1:lis += '<li><i class="second"></i> '+val.username+'：<span class="listScore">'+val.score+'</span></li>';break;
+                    case 2:lis += '<li><i class="third"></i> '+val.username+'：<span class="listScore">'+val.score+'</span></li>';break;
+                    default: lis += '<li><i>&nbsp;'+(index+1)+'</i>'+val.username+'：<span class="listScore">'+val.score+'</span></li>';break;
+                }
+			})
+			console.log(lis);
+
+		
+			// $.ajax({
+   //              url:'http://localhost/myPHP/game.php',
+   //              // data:{username:localStorage.getItem('username'),score:this.score},
+   //              // type:'post',
+   //              dataType:'json',
+   //              success:function(data){
+   //                  console.log(data);
+   //              }
+
+   //          })  
+	
+
+		}     
+
+		function checkLogin(){
+			if(localStorage.getItem('username')){
+				$('#logout').show();
+				$('#nav-three').hide();
+				$('#user').html(localStorage.getItem('username'));
+				$('#user').parent().show();
+			}else{
+				$('#logout').hide();
+				$('#nav-three').show();
+				$('#user').parent().hide();
+			}
+		}
+
+		
+    </script>
+<script src="js/randomName.js"></script>   
+</body>
+</html>
